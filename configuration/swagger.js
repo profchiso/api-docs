@@ -8,6 +8,7 @@ const swaggerDefinition = {
 	},
 	host: 'devlab.formelo.com', // the host or url of the app
 	basePath: '/api', // the basepath of your endpoint
+	schemes: 'https',
 };
 
 // options for the swagger docs

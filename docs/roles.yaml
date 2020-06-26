@@ -69,6 +69,10 @@ paths:
       responses:
         200:
           description: 'Request was successful and response recieved'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
         400:
           description: 'Request contains invalid data in the request body'
         401:
@@ -77,11 +81,6 @@ paths:
           description: 'No document found with the specified ID'
         500:
           description: 'Server entcounter an error while processing the reauest'
-
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Role'
 
     put:
       tags:
