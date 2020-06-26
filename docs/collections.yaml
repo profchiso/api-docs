@@ -6,21 +6,21 @@ paths:
       security:
         - formeloAuth: []
 
-      description: "Get all  collections"
-      summary: "Get all  collections"
+      description: 'Get all  collections'
+      summary: 'Get all  collections'
       produces:
         - application/json
       responses:
         200:
-          description: "Request was successful and response recieved"
+          description: 'Request was successful and response recieved'
           schema:
             type: object
             properties:
-              $ref: "definitions.yaml#/definition/Collection"
+              $ref: 'definitions.yaml#/definition/Collection'
         401:
-          description: "Authorization token not sent along with request or token not valid"
+          description: 'Authorization token not sent along with request or token not valid'
         500:
-          description: "Server entcounter an error while processing the reauest"
+          description: 'Server entcounter an error while processing the reauest'
 
     post:
       tags:
@@ -28,27 +28,28 @@ paths:
       security:
         - formeloAuth: []
 
-      description: "Create a new  collection"
-      summary: "Create new collection"
+      description: 'Create a new  collection'
+      summary: 'Create new collection'
       produces:
         - application/json
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "definitions.yaml#/definition/Collection"
+      parameters:
+        - in: body
+          name: Add new collections
+          description: Add new  collection
+          required: true
+          schema:
+            $ref: 'definitions.yaml#/definitions/Collection'
 
       responses:
         201:
-          description: "Collection created successfully"
+          description: 'Collection created successfully'
         400:
-          description: "Request contains invalid data in the request body"
+          description: 'Request contains invalid data in the request body'
         401:
-          description: "Authorization token not sent along with request or token not valid"
+          description: 'Authorization token not sent along with request or token not valid'
 
         500:
-          description: "Server entcounter an error while processing the reauest"
+          description: 'Server entcounter an error while processing the reauest'
 
   /collections/{id}:
     get:
@@ -57,34 +58,34 @@ paths:
       security:
         - formeloAuth: []
 
-      description: "Get a single  collection"
-      summary: "Ge a single collection"
+      description: 'Get a single  collection'
+      summary: 'Ge a single collection'
       produces:
         - application/json
       parameters:
         - in: path
           name: id
           required: true
-          description: "The ID of the collection to get(should have a .json extension)"
+          description: 'The ID of the collection to get(should have a .json extension)'
           schema:
             type: string
-            example: "ly93vp6r.json"
+            example: 'ly93vp6r.json'
 
       responses:
         200:
-          description: "Request was successful and response recieved"
+          description: 'Request was successful and response recieved'
           content:
             application/json:
               schema:
-                $ref: "definitions.yaml#/definition/Collection"
+                $ref: 'definitions.yaml#/definition/Collection'
         400:
-          description: "Request contains invalid data in the request body"
+          description: 'Request contains invalid data in the request body'
         401:
-          description: "Authorization token not sent along with request or token not valid"
+          description: 'Authorization token not sent along with request or token not valid'
         404:
-          description: "No document found with the specified ID"
+          description: 'No document found with the specified ID'
         500:
-          description: "Server entcounter an error while processing the reauest"
+          description: 'Server entcounter an error while processing the reauest'
 
     put:
       tags:
@@ -92,39 +93,45 @@ paths:
       security:
         - formeloAuth: []
 
-      description: "Updates  a given collection"
-      summary: "Update a given collection"
+      description: 'Updates  a given collection'
+      summary: 'Update a given collection'
       produces:
         - application/json
       parameters:
         - in: path
           name: id
           required: true
-          description: "The ID of the collection to be updated"
+          description: 'The ID of the collection to be updated'
           schema:
             type: string
-            example: "ly93vp6r.json"
+            example: 'ly93vp6r'
+        - in: body
+          name: update collection
+          description: Update a given collection
+          required: true
+          schema:
+            $ref: 'definitions.yaml#/definitions/Collection'
 
       responses:
         200:
-          description: "Request was successful and response recieved"
+          description: 'Request was successful and response recieved'
         400:
-          description: "Request contains invalid data in the request body"
+          description: 'Request contains invalid data in the request body'
         401:
-          description: "Authorization token not sent along with request or token not valid"
+          description: 'Authorization token not sent along with request or token not valid'
         403:
-          description: "User not authorized to access the requested resource"
+          description: 'User not authorized to access the requested resource'
         404:
-          description: "No collection found with the specified ID"
+          description: 'No collection found with the specified ID'
         500:
-          description: "Server entcounter an error while processing the reauest"
+          description: 'Server entcounter an error while processing the reauest'
 
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "definitions.yaml#/definition/Collection"
+              $ref: 'definitions.yaml#/definition/Collection'
 
     delete:
       tags:
@@ -132,27 +139,27 @@ paths:
       security:
         - formeloAuth: []
 
-      description: "Deletes a collection with the specified ID from a given colection"
-      summary: "Delete a collection"
+      description: 'Deletes a collection with the specified ID from a given colection'
+      summary: 'Delete a collection'
       produces:
         - application/json
       parameters:
         - in: path
           name: id
           required: true
-          description: "ID of the collection to be deleted"
+          description: 'ID of the collection to be deleted'
           schema:
             type: string
-            example: "q1r0ywly.json"
+            example: 'q1r0ywly.json'
 
       responses:
         400:
-          description: "User sent inavlid data"
+          description: 'User sent inavlid data'
         401:
-          description: "Authorization token not sent along with request or token not valid"
+          description: 'Authorization token not sent along with request or token not valid'
         403:
-          description: "User not authorized to access the requested resource"
+          description: 'User not authorized to access the requested resource'
         404:
-          description: "No document found with the specified ID"
+          description: 'No document found with the specified ID'
         500:
-          description: "Server entcounter an error while processing the reauest"
+          description: 'Server entcounter an error while processing the reauest'

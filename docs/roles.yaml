@@ -38,12 +38,12 @@ paths:
       summary: 'Create new role'
       produces:
         - application/json
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Role'
+      # requestBody:
+      #   required: true
+      #   content:
+      #     application/json:
+      #       schema:
+      # $ref: '#/components/schemas/Role'
 
       responses:
         201:
@@ -110,7 +110,9 @@ paths:
           description: 'The ID of the role to be updated'
           schema:
             type: string
-            example: 'ly93vp6r.json'
+            example: 'ly93vp6r'
+        - in: body
+          name: update
 
       responses:
         200:
