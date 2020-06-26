@@ -1,4 +1,4 @@
-aths:
+paths:
   /collections:
     get:
       tags:
