@@ -6,7 +6,7 @@ const swaggerDefinition = {
 		version: '1.0.0', // Version of the app
 		description: 'This is the REST API for k90', // short description of the app
 	},
-	host: 'https://devlab.formelo.com', // the host or url of the app
+	host: 'devlab.formelo.com', // the host or url of the app
 	basePath: '/api', // the basepath of your endpoint
 };
 

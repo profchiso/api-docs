@@ -220,10 +220,9 @@ definitions:
       - $ref: '#/components/schemas/Entity'
       - type: object
 
-securitySchemes:
+securityDefinitions:
   formeloAuth:
-    type: http
-    scheme: basic
+    type: basic
 
 security:
   - formeloAuth: []
