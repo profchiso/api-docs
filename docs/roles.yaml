@@ -1,8 +1,8 @@
 paths:
   /roles:
-    tags:
-      - Roles
     get:
+      tags:
+        - Roles
       security:
         - formeloAuth: []
 
@@ -15,18 +15,12 @@ paths:
           description: 'Request was successful and response recieved'
           schema:
             type: array
-            properties:
-              $ref: '#/components/schemas/Role'
+            items:
+              $ref: '#/definitions/Role'
         401:
           description: 'Authorization token not sent along with request or token not valid'
         500:
           description: 'Server entcounter an error while processing the reauest'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  allOf: [$ref: '#/components/schemas/Role']
 
     post:
       tags:
@@ -44,7 +38,7 @@ paths:
           description: Add new  Role
           required: true
           schema:
-            $ref: 'definitions.yaml#/definitions/Role'
+            $ref: '#/definitions/Role'
 
       responses:
         201:
@@ -75,15 +69,13 @@ paths:
           description: 'The ID of the role to get(should have a .json extension)'
           schema:
             type: string
-            example: 'ly93vp6r.json'
+            example: 'ly93vp6r'
 
       responses:
         200:
           description: 'Request was successful and response recieved'
           schema:
-            type: object
-            properties:
-              $ref: '#/components/schemas/Role'
+            $ref: '#/components/schemas/Role'
 
         400:
           description: 'Request contains invalid data in the request body'
@@ -113,7 +105,11 @@ paths:
             type: string
             example: 'ly93vp6r'
         - in: body
-          name: update
+          name: update role
+          description: Update a given role
+          required: true
+          schema:
+            $ref: '#/definitions/Role'
 
       responses:
         200:
@@ -142,7 +138,7 @@ paths:
       security:
         - formeloAuth: []
 
-      description: 'Deletes the document with the specified ID from a given colection'
+      description: 'Deletes the role with the specified ID from a given colection'
       summary: 'Delete a role'
       produces:
         - application/json
@@ -150,10 +146,10 @@ paths:
         - in: path
           name: id
           required: true
-          description: 'ID of the document to be deleted'
+          description: 'ID of the role to be deleted'
           schema:
             type: string
-            example: 'q1r0ywly.json'
+            example: 'q1r0ywly'
 
       responses:
         400:

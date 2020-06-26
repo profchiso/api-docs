@@ -14,7 +14,9 @@ paths:
         200:
           description: 'Request was successful and response recieved'
           schema:
-            $ref: '#/definitions/Collection'
+            type: array
+            items:
+              $ref: '#/definitions/Collection'
         401:
           description: 'Authorization token not sent along with request or token not valid'
         500:
@@ -57,7 +59,7 @@ paths:
         - formeloAuth: []
 
       description: 'Get a single  collection'
-      summary: 'Ge a single collection'
+      summary: 'Get a single collection'
       produces:
         - application/json
       parameters:
@@ -67,16 +69,13 @@ paths:
           description: 'The ID of the collection to get(should have a .json extension)'
           schema:
             type: string
-            example: 'ly93vp6r.json'
+            example: 'ly93vp6r'
 
       responses:
         200:
           description: 'Request was successful and response recieved'
-          content:
-            application/json:
-              schema:
-                type: array
-                $ref: 'definitions.yaml#/definition/Collection'
+          schema:
+            $ref: '#/definitions/Collection'
         400:
           description: 'Request contains invalid data in the request body'
         401:
@@ -130,7 +129,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'definitions.yaml#/definition/Collection'
+              $ref: 'definitions.yaml#/definitions/Collection'
 
     delete:
       tags:
@@ -149,7 +148,7 @@ paths:
           description: 'ID of the collection to be deleted'
           schema:
             type: string
-            example: 'q1r0ywly.json'
+            example: 'q1r0ywly'
 
       responses:
         400:
