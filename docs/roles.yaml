@@ -8,9 +8,15 @@ paths:
 
       description: 'Get all Roles'
       summary: 'Get all roles'
+      produces:
+        - application/json
       responses:
         200:
           description: 'Request was successful and response recieved'
+          schema:
+            type: array
+            properties:
+              $ref: '#/components/schemas/Role'
         401:
           description: 'Authorization token not sent along with request or token not valid'
         500:
@@ -30,6 +36,8 @@ paths:
 
       description: 'Create new Role'
       summary: 'Create new role'
+      produces:
+        - application/json
       requestBody:
         required: true
         content:
@@ -57,6 +65,8 @@ paths:
 
       description: 'Get a single Role'
       summary: 'Get a single role'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id
@@ -69,10 +79,11 @@ paths:
       responses:
         200:
           description: 'Request was successful and response recieved'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Role'
+          schema:
+            type: object
+            properties:
+              $ref: '#/components/schemas/Role'
+
         400:
           description: 'Request contains invalid data in the request body'
         401:
@@ -90,6 +101,8 @@ paths:
 
       description: 'Updates a Role'
       summary: 'update a role'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id
@@ -128,6 +141,8 @@ paths:
 
       description: 'Deletes the document with the specified ID from a given colection'
       summary: 'Delete a role'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id

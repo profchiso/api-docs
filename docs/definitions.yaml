@@ -74,3 +74,6 @@ securityDefinitions:
 
 security:
   - formeloAuth: []
+
+schemes:
+  - https

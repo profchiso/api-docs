@@ -8,19 +8,19 @@ paths:
 
       description: 'Get all  collections'
       summary: 'Get all  collections'
+      produces:
+        - application/json
       responses:
         200:
           description: 'Request was successful and response recieved'
+          schema:
+            type: array
+            properties:
+              $ref: '#/components/schemas/Collection'
         401:
           description: 'Authorization token not sent along with request or token not valid'
         500:
           description: 'Server entcounter an error while processing the reauest'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  allOf: [$ref: '#/components/schemas/Collection']
 
     post:
       tags:
@@ -30,6 +30,8 @@ paths:
 
       description: 'Create a new  collection'
       summary: 'Create new collection'
+      produces:
+        - application/json
       requestBody:
         required: true
         content:
@@ -57,6 +59,8 @@ paths:
 
       description: 'Get a single  collection'
       summary: 'Ge a single collection'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id
@@ -90,6 +94,8 @@ paths:
 
       description: 'Updates  a given collection'
       summary: 'Update a given collection'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id
@@ -128,6 +134,8 @@ paths:
 
       description: 'Deletes a collection with the specified ID from a given colection'
       summary: 'Delete a collection'
+      produces:
+        - application/json
       parameters:
         - in: path
           name: id
