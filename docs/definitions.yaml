@@ -5,67 +5,67 @@ definitions:
         type: string
       id:
         type: string
-        example: 'jom32mxr'
+        example: "jom32mxr"
       created_date:
         type: string
-        example: '2020-06-09T11:25:04.000Z'
+        example: "2020-06-09T11:25:04.000Z"
       modified_date:
         type: string
-        example: '2020-06-09T11:25:04.000Z'
+        example: "2020-06-09T11:25:04.000Z"
       entity_tag:
         type: string
         example: documents
       uuid:
         type: string
-        example: '58ed9b2b-7ce3-42bd-8f4d-44bce5774122'
+        example: "58ed9b2b-7ce3-42bd-8f4d-44bce5774122"
       realm:
-        $ref: '#/components/schemas/Realm'
+        $ref: "#/definitions/Realm"
       modifier:
-        $ref: '#/components/schemas/Modifier'
+        $ref: "#/definitions/Modifier"
   Realm:
     properties:
       id:
         type: string
-        example: 'q1r08ejy'
+        example: "q1r08ejy"
   Modifier:
     properties:
       name:
         type: string
-        example: 'Chinedu'
+        example: "Chinedu"
       id:
         type: string
-        example: '3r918xl8'
+        example: "3r918xl8"
       uuid:
         type: string
-        example: '58ed9b2b-7ce3-42bd-8f4d-44bce5774122'
+        example: "58ed9b2b-7ce3-42bd-8f4d-44bce5774122"
       username:
         type: string
-        example: 'okorie.chinedu@pmglobaltechnology.com'
+        example: "okorie.chinedu@pmglobaltechnology.com"
 
   Collection:
-    description: 'Schema for a collection'
+    description: "Schema for a collection"
     properties:
       size:
         type: number
         example: 0
-        description: 'size of collection'
+        description: "size of collection"
       slug:
         type: string
-        example: 'fly_local'
-        description: 'Unique name for a collection'
+        example: "fly_local"
+        description: "Unique name for a collection"
     allOf:
-      - $ref: '#/components/schemas/Entity'
+      - $ref: "#/definitions/Entity"
       - type: object
 
   Role:
-    description: 'Role for users'
+    description: "Role for users"
     properties:
       code:
         type: string
-        example: 'ADMINISTRATOR'
-        description: 'Role code of a user or user-group'
+        example: "ADMINISTRATOR"
+        description: "Role code of a user or user-group"
     allOf:
-      - $ref: '#/components/schemas/Entity'
+      - $ref: "#/definitions/Entity"
       - type: object
 
 securityDefinitions:

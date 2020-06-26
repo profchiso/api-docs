@@ -1,0 +1,21 @@
+Entity:
+  properties:
+    name:
+      type: string
+      example: Test
+    id:
+      type: string
+      example: jom32mxr
+    created_date:
+      type: string
+      example: 2020-06-09T11:25:04Z
+    modified_date:
+      type: string
+      example: 2020-06-09T11:25:04Z
+    uuid:
+      type: string
+      example: 58ed9b2b-7ce3-42bd-8f4d-44bce5774122
+    realm:
+      $ref: "#/components/schemas/RealmShortInfo"
+    modifier:
+      $ref: "#/components/schemas/Modifier"
