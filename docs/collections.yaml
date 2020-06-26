@@ -1,0 +1,218 @@
+aths:
+  /collections:
+    get:
+      tags:
+        - Collections
+      security:
+        - formeloAuth: []
+
+      description: 'Get all  collections'
+      summary: 'Get all  collections'
+      responses:
+        200:
+          description: 'Request was successful and response recieved'
+        401:
+          description: 'Authorization token not sent along with request or token not valid'
+        500:
+          description: 'Server entcounter an error while processing the reauest'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf: [$ref: '#/components/schemas/Collection']
+
+    post:
+      tags:
+        - Collections
+      security:
+        - formeloAuth: []
+
+      description: 'Create a new  collection'
+      summary: 'Create new collection'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
+
+      responses:
+        201:
+          description: 'Collection created successfully'
+        400:
+          description: 'Request contains invalid data in the request body'
+        401:
+          description: 'Authorization token not sent along with request or token not valid'
+
+        500:
+          description: 'Server entcounter an error while processing the reauest'
+
+  /collections/{id}:
+    get:
+      tags:
+        - Collections
+      security:
+        - formeloAuth: []
+
+      description: 'Get a single  collection'
+      summary: 'Ge a single collection'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: 'The ID of the collection to get(should have a .json extension)'
+          schema:
+            type: string
+            example: 'ly93vp6r.json'
+
+      responses:
+        200:
+          description: 'Request was successful and response recieved'
+        400:
+          description: 'Request contains invalid data in the request body'
+        401:
+          description: 'Authorization token not sent along with request or token not valid'
+        404:
+          description: 'No document found with the specified ID'
+        500:
+          description: 'Server entcounter an error while processing the reauest'
+
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+
+    put:
+      tags:
+        - Collections
+      security:
+        - formeloAuth: []
+
+      description: 'Updates  a given collection'
+      summary: 'Update a given collection'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: 'The ID of the collection to be updated'
+          schema:
+            type: string
+            example: 'ly93vp6r.json'
+
+      responses:
+        200:
+          description: 'Request was successful and response recieved'
+        400:
+          description: 'Request contains invalid data in the request body'
+        401:
+          description: 'Authorization token not sent along with request or token not valid'
+        403:
+          description: 'User not authorized to access the requested resource'
+        404:
+          description: 'No collection found with the specified ID'
+        500:
+          description: 'Server entcounter an error while processing the reauest'
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collection'
+
+    delete:
+      tags:
+        - Collections
+      security:
+        - formeloAuth: []
+
+      description: 'Deletes a collection with the specified ID from a given colection'
+      summary: 'Delete a collection'
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: 'ID of the collection to be deleted'
+          schema:
+            type: string
+            example: 'q1r0ywly.json'
+
+      responses:
+        400:
+          description: 'User sent inavlid data'
+        401:
+          description: 'Authorization token not sent along with request or token not valid'
+        403:
+          description: 'User not authorized to access the requested resource'
+        404:
+          description: 'No document found with the specified ID'
+        500:
+          description: 'Server entcounter an error while processing the reauest'
+
+definitions:
+  Entity:
+    properties:
+      name:
+        type: string
+      id:
+        type: string
+        example: 'jom32mxr'
+      created_date:
+        type: string
+        example: '2020-06-09T11:25:04.000Z'
+      modified_date:
+        type: string
+        example: '2020-06-09T11:25:04.000Z'
+      entity_tag:
+        type: string
+        example: documents
+      uuid:
+        type: string
+        example: '58ed9b2b-7ce3-42bd-8f4d-44bce5774122'
+      realm:
+        $ref: '#/components/schemas/Realm'
+      modifier:
+        $ref: '#/components/schemas/Modifier'
+  Realm:
+    properties:
+      id:
+        type: string
+        example: 'q1r08ejy'
+  Modifier:
+    properties:
+      name:
+        type: string
+        example: 'Chinedu'
+      id:
+        type: string
+        example: '3r918xl8'
+      uuid:
+        type: string
+        example: '58ed9b2b-7ce3-42bd-8f4d-44bce5774122'
+      username:
+        type: string
+        example: 'okorie.chinedu@pmglobaltechnology.com'
+
+  Collection:
+    description: 'Schema for a collection'
+    properties:
+      size:
+        type: number
+        example: 0
+        description: 'size of collection'
+      slug:
+        type: string
+        example: 'fly_local'
+        description: 'Unique name for a collection'
+    allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+
+securitySchemes:
+  formeloAuth:
+    type: http
+    scheme: basic
+
+security:
+  - formeloAuth: []
