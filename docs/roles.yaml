@@ -38,12 +38,13 @@ paths:
       summary: 'Create new role'
       produces:
         - application/json
-      # requestBody:
-      #   required: true
-      #   content:
-      #     application/json:
-      #       schema:
-      # $ref: '#/components/schemas/Role'
+      parameters:
+        - in: body
+          name: Add new Role
+          description: Add new  Role
+          required: true
+          schema:
+            $ref: 'definitions.yaml#/definitions/Role'
 
       responses:
         201:

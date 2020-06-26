@@ -14,9 +14,7 @@ paths:
         200:
           description: 'Request was successful and response recieved'
           schema:
-            type: object
-            properties:
-              $ref: 'definitions.yaml#/definition/Collection'
+            $ref: '#/definitions/Collection'
         401:
           description: 'Authorization token not sent along with request or token not valid'
         500:
@@ -38,7 +36,7 @@ paths:
           description: Add new  collection
           required: true
           schema:
-            $ref: 'definitions.yaml#/definitions/Collection'
+            $ref: '#/definitions/Collection'
 
       responses:
         201:
@@ -77,6 +75,7 @@ paths:
           content:
             application/json:
               schema:
+                type: array
                 $ref: 'definitions.yaml#/definition/Collection'
         400:
           description: 'Request contains invalid data in the request body'
@@ -110,7 +109,7 @@ paths:
           description: Update a given collection
           required: true
           schema:
-            $ref: 'definitions.yaml#/definitions/Collection'
+            $ref: '#/definitions/Collection'
 
       responses:
         200:
